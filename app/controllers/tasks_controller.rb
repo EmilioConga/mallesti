@@ -31,14 +31,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(valid_params)
-  end
-
-  def valid_params
-    if params[:action] == 'create'
-      [:title, :description, :tag, :estimation, :project_id]
-    else
-      [:title, :description, :tag, :estimation]
-    end
+    params.require(:task).permit(:title, :description, :tag, :estimation)
   end
 end

@@ -9,13 +9,27 @@ RSpec.describe ProjectsController, type: :controller do
   before :all do
     @user = FactoryGirl.create(:user)
     @model = Project
+
+    # Mis proyectos necesitan un cliente
     customer = FactoryGirl.create(:customer, user: @user)
-    @create_params = {customer_id: customer.id.to_s}
+
+    # Para el test de show
     @resource = FactoryGirl.create(:project, customer: customer)
+
+    # Para el test de create
+    @create_params = {customer_id: customer.id.to_s}
+
+    # Para el test de create y destroy
+    @parameters = FactoryGirl.attributes_for(:project, customer_id: customer.id.to_s)
+
+    # Para los test de index
+    ## Opciones necesarias para crear la lista de proyectos en el test de index
     @list_options = {customer: customer}
+    ## Parámetros que se envían al get :index
     @index_params = {customer_id: customer.id.to_s}
     @first_page_resources = customer.projects
-    @parameters = FactoryGirl.attributes_for(:project, customer_id: customer.id.to_s)
+
+    # Para el test de update
     @update_params = FactoryGirl.attributes_for(:project_update)
   end
 
@@ -35,6 +49,7 @@ RSpec.describe ProjectsController, type: :controller do
         FactoryGirl.create_list(:project, 2, customer: customer2)
 
         get :index, customer_id: customer1.id.to_s
+        # Sólo quiero los proyectos de customer1
         expect(assigns(:projects).to_a).to match_array projects
       end
     end
@@ -43,7 +58,7 @@ RSpec.describe ProjectsController, type: :controller do
       it "should not update #customer_id" do
         project = FactoryGirl.create(:project, customer: customer1)
 
-        put :update, id: project.id, project: { customer: customer2.id.to_s }
+        put :update, id: project.id, project: { customer_id: customer2.id.to_s }
         project.reload
 
         expect(project.customer_id).to eql customer1.id

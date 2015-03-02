@@ -9,16 +9,28 @@ RSpec.describe TasksController, type: :controller do
   before :all do
     @user = FactoryGirl.create(:user)
     @model = Task
+
+
+    # Mis tareas necesitan un proyecto
     @customer = FactoryGirl.create(:customer, user: @user)
     project = FactoryGirl.create(:project, customer: @customer)
-    @create_params = {project_id: project.id.to_s}
+    # Para el test de show
     @resource = FactoryGirl.create(:task, project: project)
-    # Opciones necesarias para crear la lista de tasks en el test de index
+
+    # Para el test de create
+    @create_params = {project_id: project.id.to_s}
+
+    # Para el test de index
+    ## Opciones necesarias para crear la lista de tasks en el test de index
     @list_options = {project: project}
-    # Parámetros que se envía al get :index
+    ## Parámetros que se envían al get :index
     @index_params = {project_id: project.id.to_s}
     @first_page_resources = project.tasks
+
+    # Para el test de create y destroy
     @parameters = FactoryGirl.attributes_for(:task, project_id: project.id.to_s)
+
+    # Para el test de update
     @update_params = FactoryGirl.attributes_for(:task_update)
   end
 
