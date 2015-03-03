@@ -14,6 +14,12 @@ gem 'active_model_serializers'
 
 gem 'rack-cors'
 
+# Assets gems
+gem 'bootstrap-sass' 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular'
+end
+
 # Estas gemas sólo se usan en el entorno de desarrollo (development)
 group :development do
   # Consola para trabajar en el entorno de desarrollo (development) más bonita
