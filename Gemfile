@@ -16,8 +16,10 @@ gem 'rack-cors'
 
 # Assets gems
 gem 'bootstrap-sass' 
+gem 'angular-rails-templates'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular'
+  gem 'rails-assets-angular-ui-router'
 end
 
 # Estas gemas sólo se usan en el entorno de desarrollo (development)
