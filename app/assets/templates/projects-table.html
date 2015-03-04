@@ -1,0 +1,17 @@
+<div class="col-md-6">
+  <table class="table">
+    <caption>Listado de proyectos</caption>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="project in customerCtrl.customer.projects |orderBy:'name'">
+        <td>{{project.name | uppercase}}</td>
+        <td>{{project.description}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

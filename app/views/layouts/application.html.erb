@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p>{{"hello, world!"}}</p>
-
+ 
+  <table ng-controller="CustomersController as customersCtrl">
+  	<caption>TABLA DE DAMIAN</caption>
+  	<thead>
+  		<tr>
+  			<th>NOMBRE</th>
+  			<th>EMAIL</th>
+  			<th>TLF</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr ng-repeat="customer in customersCtrl.customers">
+  			<td>{{customer.name}}</td>
+  			<td>{{customer.email}}</td>
+  			<td>{{customer.phone}}</td>
+  		</tr>
+  		
+  	</tbody>
+  </table>
 
 </body>
 </html>
