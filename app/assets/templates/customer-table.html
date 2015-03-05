@@ -1,5 +1,5 @@
-
- <table class="table table-condensed">
+<div class=" col-md-6">
+<table class="table table-condensed">
     <caption>LISTA DE CLIENTES</caption>
     <thead>
       <tr>
@@ -10,15 +10,48 @@
       <tr ng-repeat="clienteHtml in customersCtrl.clientes">
         <td>{{clienteHtml.name}}</td>
 
-        <td><button class="btn btn-success"  ui-sref="customer({cliente_id: clienteHtml.id})"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Ver cliente</button>
-        <button type="button" class="btn btn-danger">
-  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Borrar cliente
-</button>
-</td>
-        
+        <td><button class="btn btn-success" ui-sref="customer({cliente_id: clienteHtml.id})">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Ver cliente
+            </button>
+            <button type="button" class="btn btn-danger" ng-click="customersCtrl.removeCustomer(clienteHtml)">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Borrar cliente
+            </button>
+        </td>   
       </tr>
-      
-      
-      
     </tbody>
-    </table>
+</table>
+</div>
+
+<div class=" col-md-6" >
+<form class="form-horizontal" role="form"><br>
+    <caption><strong>REGISTRO DE NUEVOS CLIENTES</strong></caption>
+   
+   <div class="form-group"><br>
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cliente</label>
+    <div class="col-lg-10">
+      <input type="txt" class="form-control">
+    </div>
+    </div>
+
+
+  <div class="form-group">
+    <label for="formulario_email" class="col-lg-2 control-label">Email</label>
+    <div class="col-lg-10">
+      <input type="txt" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="formulario_phone" class="col-lg-2 control-label">Telefono</label>
+    <div class="col-lg-10">
+      <input type="txt" class="form-control" >
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit"  class="btn btn-default">Guardar</button>
+    </div>
+  </div>
+</form>
+</div>

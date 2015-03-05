@@ -22,8 +22,6 @@
 	    })
 	});
 
-
-
   // Controladores
   app.controller('CustomersController', ['$http', function($http){      
    	var scope = this;
@@ -33,6 +31,19 @@
     .success(function(data){
       scope.clientes = data.customers;
     })
+    // Funcion que recibe un cliente y lo borra
+    scope.removeCustomer = function(cliente) {
+     if (confirm("¿Estas seguro de borrar este cliente " + cliente.name + "?")) {
+
+    	$http.delete('/customers/' + cliente.id + '.json')
+    	 .success(function(){
+    	 	// Busco el indice del array que contiene el objeto "cliente"
+    		var index = scope.clientes.indexOf(cliente);
+    		// Borra la posicion index del array
+    		scope.clientes.splice(index, 1);
+    	})
+    	}
+    };	 
   }]);
 
   app.controller('CustomerController', ['$http', '$state', function($http, $state){ 
