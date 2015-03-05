@@ -26,11 +26,15 @@
   app.controller('CustomersController', ['$http', function($http){      
    	var scope = this;
    	scope.clientes = [];
+   	// variable para el formulario
+   	scope.nuevoCliente= {};
 
    	$http.get('/customers.json')
     .success(function(data){
       scope.clientes = data.customers;
     })
+
+
     // Funcion que recibe un cliente y lo borra
     scope.removeCustomer = function(cliente) {
      if (confirm("¿Estas seguro de borrar este cliente " + cliente.name + "?")) {

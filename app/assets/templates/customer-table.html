@@ -29,28 +29,71 @@
    <div class="form-group"><br>
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cliente</label>
     <div class="col-lg-10">
-      <input type="txt" class="form-control">
+      <input ng-model="customersCtrl.nuevoCliente.name" type="text" class="form-control">
     </div>
     </div>
 
 
   <div class="form-group">
-    <label for="formulario_email" class="col-lg-2 control-label">Email</label>
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
-      <input type="txt" class="form-control">
+      <input ng-model="customersCtrl.nuevoCliente.email" type="text" class="form-control">
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="formulario_phone" class="col-lg-2 control-label">Telefono</label>
+
+   <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Direccion</label>
     <div class="col-lg-10">
-      <input type="txt" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.address" type="text" class="form-control" >
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pais</label>
+    <div class="col-lg-10">
+      <input ng-model="customersCtrl.nuevoCliente.coutry" type="text" class="form-control" >
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Ciudad</label>
+    <div class="col-lg-10">
+      <input ng-model="customersCtrl.nuevoCliente.city" type="text" class="form-control" >
+    </div>
+  </div>
+
+      <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pueblo</label>
+    <div class="col-lg-10">
+      <input ng-model="customersCtrl.nuevoCliente.town" type="text" class="form-control" >
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Codigo Postal</label>
+    <div class="col-lg-10">
+      <input ng-model="customersCtrl.nuevoCliente.zip_code" type="text" class="form-control" >
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cif</label>
+    <div class="col-lg-10">
+      <input ng-model="customersCtrl.nuevoCliente.cif" type="text" class="form-control" >
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Telefono</label>
+    <div class="col-lg-10">
+      <input ng-model="customersCtrl.nuevoCliente.phone" type="text" class="form-control" >
     </div>
   </div>
  
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit"  class="btn btn-default">Guardar</button>
+      <button type="submit"  class="btn btn-success">Guardar</button>
     </div>
   </div>
 </form>
