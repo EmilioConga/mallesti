@@ -1,0 +1,24 @@
+
+ <table class="table table-condensed">
+    <caption>LISTA DE CLIENTES</caption>
+    <thead>
+      <tr>
+        <th>NOMBRE</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr ng-repeat="clienteHtml in customersCtrl.clientes">
+        <td>{{clienteHtml.name}}</td>
+
+        <td><button class="btn btn-success"  ui-sref="customer({cliente_id: clienteHtml.id})"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Ver cliente</button>
+        <button type="button" class="btn btn-danger">
+  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Borrar cliente
+</button>
+</td>
+        
+      </tr>
+      
+      
+      
+    </tbody>
+    </table>
