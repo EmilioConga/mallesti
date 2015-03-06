@@ -22,7 +22,7 @@
 	    })
 	});
 
-  // Controladores
+ // Controladores
   app.controller('CustomersController', ['$http', function($http){      
    	var scope = this;
    	scope.clientes = [];
@@ -30,6 +30,7 @@
    	scope.nuevoCliente= {};
    	//variable para los errores
    	scope.errors = {};
+
 
    	$http.get('/customers.json')
 	  .success(function(data){
@@ -42,13 +43,12 @@
 		$http.post('/customers.json', {customer: scope.nuevoCliente}) 
 				// Solo se llama si se crea correctamente
 			  .success(function(data){
-			  	//En este array de clientes, meto el que acabo de crear
+			  	// En este array de clientes, meto el que acabo de crear
 			  	scope.clientes.push(data.customer);
     			scope.nuevoCliente= {};
 			   })
 				
 				// Solo se llama si ha ocurrido un error y no se ha creado
-
 			  .error(function(data) {
 			       scope.errors = data.errors
 			  })
@@ -83,11 +83,22 @@
   	 })
 	}]);
 
-	// Directivas
+
+
+// Directivas
 	app.directive('customerTable', function(){
 	  return {
 	    restrict: 'E',
 	    templateUrl: 'customer-table.html',
+	    controller: 'CustomersController',
+    	controllerAs: 'customersCtrl'
+	  };
+	});
+
+	app.directive('customerForm', function(){
+	  return {
+	    restrict: 'E',
+	    templateUrl: 'customer-form.html',
 	    controller: 'CustomersController',
     	controllerAs: 'customersCtrl'
 	  };
