@@ -23,10 +23,11 @@
 </div>
 
 <div class=" col-md-6" >
-<form class="form-horizontal" role="form"><br>
+<form name="formulario_nuevo_cliente" class="form-horizontal" role="form" ng-submit="customersCtrl.addCustomer()"><br>
+
     <caption><strong>REGISTRO DE NUEVOS CLIENTES</strong></caption>
    
-   <div class="form-group"><br>
+   <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.name }"><br>
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cliente</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.name" type="text" class="form-control">
@@ -34,7 +35,7 @@
     </div>
 
 
-  <div class="form-group">
+  <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.email }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.email" type="text" class="form-control">
@@ -42,52 +43,52 @@
   </div>
 
 
-   <div class="form-group">
+   <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.address }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Direccion</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.address" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.address" type="text" class="form-control">
     </div>
   </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.country }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pais</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.coutry" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.country" type="text" class="form-control">
     </div>
   </div>
 
-    <div class="form-group">
-    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Ciudad</label>
+    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.city }">
+    <label for="formulario_nuevo_cliente" class="col-lg-2 control-label ">Ciudad</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.city" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.city" type="text" class="form-control">
     </div>
   </div>
 
-      <div class="form-group">
+      <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.town }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pueblo</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.town" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.town" type="text" class="form-control">
     </div>
   </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.zip_code }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Codigo Postal</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.zip_code" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.zip_code" type="text" class="form-control">
     </div>
   </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.cif }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cif</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.cif" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.cif" type="text" class="form-control">
     </div>
   </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.phone }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Telefono</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.phone" type="text" class="form-control" >
+      <input ng-model="customersCtrl.nuevoCliente.phone" type="text" class="form-control">
     </div>
   </div>
  
