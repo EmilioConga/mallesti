@@ -28,11 +28,34 @@
    	scope.clientes = [];
    	// variable para el formulario
    	scope.nuevoCliente= {};
+   	//variable para los errores
+   	scope.errors = {};
 
    	$http.get('/customers.json')
-    .success(function(data){
-      scope.clientes = data.customers;
-    })
+	  .success(function(data){
+	      scope.clientes = data.customers;
+	  })
+
+   	scope.addCustomer = function() {
+    	
+		// Creamos un cliente nuevo en la base de datos. El verbo para crear es POST y la URL /customer.json. Ahora tengo que pasarle los datos del formulario... y lo hago con {customer: scope.nuevoCliente})
+		$http.post('/customers.json', {customer: scope.nuevoCliente}) 
+				// Solo se llama si se crea correctamente
+			  .success(function(data){
+			  	//En este array de clientes, meto el que acabo de crear
+			  	scope.clientes.push(data.customer);
+    			scope.nuevoCliente= {};
+			   })
+				
+				// Solo se llama si ha ocurrido un error y no se ha creado
+
+			  .error(function(data) {
+			       scope.errors = data.errors
+			  })
+
+
+  	};
+
 
 
     // Funcion que recibe un cliente y lo borra
