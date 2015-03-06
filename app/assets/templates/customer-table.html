@@ -31,6 +31,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cliente</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.name" type="text" class="form-control">
+      <div class="alert alert-danger" ng-show="customersCtrl.errors.name">{{customersCtrl.errors.name.join(',')}}</div>
     </div>
     </div>
 
@@ -39,6 +40,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.email" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.email">{{customersCtrl.errors.email.join(',')}}</div>
     </div>
   </div>
 
@@ -47,6 +49,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Direccion</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.address" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.address">{{customersCtrl.errors.address.join(',')}}</div>
     </div>
   </div>
 
@@ -54,6 +57,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pais</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.country" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.country">{{customersCtrl.errors.country.join(',')}}</div>
     </div>
   </div>
 
@@ -61,6 +65,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label ">Ciudad</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.city" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.city">{{customersCtrl.errors.city.join(',')}}</div>
     </div>
   </div>
 
@@ -68,6 +73,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pueblo</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.town" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.town">{{customersCtrl.errors.town.join(',')}}</div>
     </div>
   </div>
 
@@ -82,6 +88,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cif</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.cif" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.cif">{{customersCtrl.errors.cif.join(',')}}</div>
     </div>
   </div>
 
@@ -89,6 +96,7 @@
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Telefono</label>
     <div class="col-lg-10">
       <input ng-model="customersCtrl.nuevoCliente.phone" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="customersCtrl.errors.phone">{{customersCtrl.errors.phone.join(',')}}</div>
     </div>
   </div>
  
