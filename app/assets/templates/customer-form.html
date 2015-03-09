@@ -1,81 +1,82 @@
 <div class=" col-md-6" >
-<form name="formulario_nuevo_cliente" class="form-horizontal" role="form" ng-submit="customersCtrl.addCustomer()"><br>
+<form name="formulario_nuevo_cliente" class="form-horizontal" role="form"
+  ng-submit="ctrl.guardarCliente()"><br>
 
     <caption><strong>REGISTRO DE NUEVOS CLIENTES</strong></caption>
-   
-   <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.name }"><br>
+
+   <div class="form-group" ng-class="{ 'has-error':ctrl.errors.name }"><br>
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cliente</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.name" type="text" class="form-control">
-      <div class="alert alert-danger" ng-show="customersCtrl.errors.name">{{customersCtrl.errors.name.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.name" type="text" class="form-control">
+      <div class="alert alert-danger" ng-show="ctrl.errors.name">{{ctrl.errors.name.join(',')}}</div>
     </div>
     </div>
 
 
-  <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.email }">
+  <div class="form-group" ng-class="{ 'has-error':ctrl.errors.email }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Email</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.email" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.email">{{customersCtrl.errors.email.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.email" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.email">{{ctrl.errors.email.join(',')}}</div>
     </div>
   </div>
 
 
-   <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.address }">
+   <div class="form-group" ng-class="{ 'has-error':ctrl.errors.address }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Direccion</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.address" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.address">{{customersCtrl.errors.address.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.address" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.address">{{ctrl.errors.address.join(',')}}</div>
     </div>
   </div>
 
-    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.country }">
+    <div class="form-group" ng-class="{ 'has-error':ctrl.errors.country }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pais</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.country" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.country">{{customersCtrl.errors.country.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.country" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.country">{{ctrl.errors.country.join(',')}}</div>
     </div>
   </div>
 
-    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.city }">
+    <div class="form-group" ng-class="{ 'has-error':ctrl.errors.city }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label ">Ciudad</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.city" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.city">{{customersCtrl.errors.city.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.city" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.city">{{ctrl.errors.city.join(',')}}</div>
     </div>
   </div>
 
-      <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.town }">
+      <div class="form-group" ng-class="{ 'has-error':ctrl.errors.town }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Pueblo</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.town" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.town">{{customersCtrl.errors.town.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.town" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.town">{{ctrl.errors.town.join(',')}}</div>
     </div>
   </div>
 
-    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.zip_code }">
+    <div class="form-group" ng-class="{ 'has-error':ctrl.errors.zip_code }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Codigo Postal</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.zip_code" type="text" class="form-control">
+      <input ng-model="ctrl.formularioCliente.zip_code" type="text" class="form-control">
     </div>
   </div>
 
-    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.cif }">
+    <div class="form-group" ng-class="{ 'has-error':ctrl.errors.cif }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Cif</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.cif" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.cif">{{customersCtrl.errors.cif.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.cif" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.cif">{{ctrl.errors.cif.join(',')}}</div>
     </div>
   </div>
 
-    <div class="form-group" ng-class="{ 'has-error':customersCtrl.errors.phone }">
+    <div class="form-group" ng-class="{ 'has-error':ctrl.errors.phone }">
     <label for="formulario_nuevo_cliente" class="col-lg-2 control-label">Telefono</label>
     <div class="col-lg-10">
-      <input ng-model="customersCtrl.nuevoCliente.phone" type="text" class="form-control">
-       <div class="alert alert-danger" ng-show="customersCtrl.errors.phone">{{customersCtrl.errors.phone.join(',')}}</div>
+      <input ng-model="ctrl.formularioCliente.phone" type="text" class="form-control">
+       <div class="alert alert-danger" ng-show="ctrl.errors.phone">{{ctrl.errors.phone.join(',')}}</div>
     </div>
   </div>
- 
+
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <button type="submit"  class="btn btn-success">Guardar</button>
