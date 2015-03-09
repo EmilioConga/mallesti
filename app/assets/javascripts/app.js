@@ -25,6 +25,7 @@
  // Controladores
   app.controller('CustomersController', ['$http', function($http){      
    	var scope = this;
+   	//variable para pintar la tabla
    	scope.clientes = [];
    	// variable para el formulario
    	scope.nuevoCliente= {};
@@ -35,9 +36,9 @@
    	$http.get('/customers.json')
 	  .success(function(data){
 	      scope.clientes = data.customers;
-	  })
+	    })
 
-   	scope.addCustomer = function() {
+   		scope.addCustomer = function() {
     	
 		// Creamos un cliente nuevo en la base de datos. El verbo para crear es POST y la URL /customer.json. Ahora tengo que pasarle los datos del formulario... y lo hago con {customer: scope.nuevoCliente})
 		$http.post('/customers.json', {customer: scope.nuevoCliente}) 
@@ -46,36 +47,39 @@
 			  	// En este array de clientes, meto el que acabo de crear
 			  	scope.clientes.push(data.customer);
     			scope.nuevoCliente= {};
-			   })
+				})
 				
 				// Solo se llama si ha ocurrido un error y no se ha creado
 			  .error(function(data) {
 			       scope.errors = data.errors
-			  })
-
-
-  	};
+				})
+  			};
 
 
 
-    // Funcion que recibe un cliente y lo borra
-    scope.removeCustomer = function(cliente) {
-     if (confirm("¿Estas seguro de borrar este cliente " + cliente.name + "?")) {
+	    // Funcion que recibe un cliente y lo borra
+	    scope.removeCustomer = function(cliente) {
+	     if (confirm("¿Estas seguro de borrar este cliente " + cliente.name + "?")) {
 
-    	$http.delete('/customers/' + cliente.id + '.json')
-    	 .success(function(){
-    	 	// Busco el indice del array que contiene el objeto "cliente"
-    		var index = scope.clientes.indexOf(cliente);
-    		// Borra la posicion index del array
-    		scope.clientes.splice(index, 1);
-    	})
-    	}
-    };	 
-  }]);
+	    	$http.delete('/customers/' + cliente.id + '.json')
+	    	 .success(function(){
+	    	 	// Busco el indice del array que contiene el objeto "cliente"
+	    		var index = scope.clientes.indexOf(cliente);
+	    		// Borra la posicion index del array
+	    		scope.clientes.splice(index, 1);
+    			})
+    		}
+    	};	 
+  	}]);
 
   app.controller('CustomerController', ['$http', '$state', function($http, $state){ 
   	var scope = this;
   	scope.cliente = {};
+  	scope.showForm = false;
+
+  	scope.toggleForm = function() {
+  		scope.showForm = !scope.showForm;
+  	};
 
   	$http.get('/customers/' + $state.params.cliente_id + '.json')
   	.success(function(data){
@@ -85,7 +89,7 @@
 
 
 
-// Directivas
+	// Directivas
 	app.directive('customerTable', function(){
 	  return {
 	    restrict: 'E',
