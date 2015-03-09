@@ -28,7 +28,7 @@
    	//variable para pintar la tabla
    	scope.clientes = [];
    	// variable para el formulario
-   	scope.nuevoCliente= {};
+   	scope.formularioCliente= {};
    	//variable para los errores
    	scope.errors = {};
 
@@ -38,15 +38,17 @@
 	      scope.clientes = data.customers;
 	    })
 
-   		scope.addCustomer = function() {
+   		scope.guardarCliente = function() {
     	
-		// Creamos un cliente nuevo en la base de datos. El verbo para crear es POST y la URL /customer.json. Ahora tengo que pasarle los datos del formulario... y lo hago con {customer: scope.nuevoCliente})
-		$http.post('/customers.json', {customer: scope.nuevoCliente}) 
+		// Creamos un cliente nuevo en la base de datos. El verbo para crear es POST y la URL /customer.json. Ahora tengo que pasarle los datos del formulario... y lo hago con {customer: scope.formularioCliente})
+		$http.post('/customers.json', {customer: scope.formularioCliente}) 
 				// Solo se llama si se crea correctamente
 			  .success(function(data){
 			  	// En este array de clientes, meto el que acabo de crear
 			  	scope.clientes.push(data.customer);
-    			scope.nuevoCliente= {};
+    			scope.formularioCliente= {};  
+    			scope.errors = {};
+            
 				})
 				
 				// Solo se llama si ha ocurrido un error y no se ha creado
@@ -72,19 +74,42 @@
     	};	 
   	}]);
 
-  app.controller('CustomerController', ['$http', '$state', function($http, $state){ 
+  app.controller('CustomerController', ['$http', '$state', '$timeout', function($http, $state, $timeout){ 
   	var scope = this;
   	scope.cliente = {};
+  	scope.formularioCliente = {};
   	scope.showForm = false;
+  	scope.errors = {};
+  	scope.alerta = false
+
+  	$http.get('/customers/' + $state.params.cliente_id + '.json')
+    .success(function(data){
+      scope.cliente = data.customer;
+      angular.copy(data.customer, scope.formularioCliente);
+     })
 
   	scope.toggleForm = function() {
   		scope.showForm = !scope.showForm;
-  	};
+   };
 
-  	$http.get('/customers/' + $state.params.cliente_id + '.json')
-  	.success(function(data){
-  		scope.cliente = data.customer;
-  	 })
+    scope.guardarCliente = function() {
+      $http.put("/customers/" + scope.cliente.id + ".json", {customer: scope.formularioCliente})
+        .success(function() {
+          // Modificamos el cliente con los datos del formulario
+          angular.copy(scope.formularioCliente, scope.cliente);
+          // Ponemos error a vacío para que no salga en rojo de nuevo
+          scope.errors = {};
+          // Ocultamos el formulario
+          scope.showForm = false;
+          // Mostramos una alerta ala usuario
+          scope.alerta = true;
+          // La alerta se oculta después de 3 segundos
+          $timeout(function(){scope.alerta = false;}, 3000);
+        })
+        .error(function(data) {
+          scope.errors = data.errors;
+        });
+  	};
 	}]);
 
 
@@ -103,8 +128,9 @@
 	  return {
 	    restrict: 'E',
 	    templateUrl: 'customer-form.html',
-	    controller: 'CustomersController',
-    	controllerAs: 'customersCtrl'
+	    scope: {
+        ctrl: "="
+      }
 	  };
 	});
 })();
