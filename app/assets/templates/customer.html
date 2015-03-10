@@ -10,9 +10,10 @@
 		<li>TLF: {{customerCtrl.cliente.phone}}</li>
 		<li>CIUDAD: {{customerCtrl.cliente.town}}</li>
 		<li>PAIS: {{customerCtrl.cliente.country}}</li>
+		
+		</ul>
 		<button class="btn btn-success" ui-sref="customers">Atras</button>
 		<button class="btn btn-success" ng-click="customerCtrl.toggleForm()">Editar</button>
-		</ul>
 
 		<customer-form ctrl="customerCtrl" ng-show="customerCtrl.showForm"></customer-form>
 
@@ -35,12 +36,14 @@
 	        <td>{{proyectoHtml.description}}</td>
 
 	       <td>
+	       	<div class="btn-group btn-group-xs">
 	       		<button class="btn btn-info" ui-sref="customer()">
 	              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Tareas
 	            </button>
 	            <button type="button" class="btn btn-danger" ng-click="customersCtrl.removeCustomer(proyectoHtml)">
 	              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Borrar 
 	            </button>
+	            </div>
 	        </td> 
 	      </tr>
 	    </tbody>
