@@ -1,0 +1,36 @@
+<div class="container" style="margin-top:10%">
+  <div class="col-md-3 col-md-offset-4">
+    <div class="panel member_signin">
+      <div class="panel-body">
+        <div class="fa_user">
+          <i class="fa fa-user"></i>
+        </div>
+        <p class="member">Por favor, inicie sesión</p>
+		<form class="loginform" ng-submit="loginCtrl.login()">
+		  <p ng-show="loginCtrl.error">Email o contraseña incorrectos</p>
+		   <div class="form-group">
+		  	<label for="inputEmail" class="sr-only">Email</label>
+		   		<div class="input-group">
+		 	 		<input type="email" id="inputEmail" class="form-control" placeholder="Email"
+		   required="" autofocus="" ng-model="loginCtrl.session.email">
+		   		</div>
+		   </div>
+		   <div class="form-group">
+			  <label for="inputPassword" class="sr-only">Contraseña</label>
+			  	<div class="input-group">
+			  		<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña"
+			   required="" ng-model="loginCtrl.session.password">
+		    	</div>
+		    </div>
+		  <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+		</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+       
+        

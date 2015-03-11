@@ -1,24 +1,67 @@
 (function(){
-  var app = angular.module('mallesti', ['templates', 'ui.router']);
+  var app = angular.module('mallesti', ['templates', 'permission', 'mallesti-permission', 'ui.router', 'mallesti-auth']);
   
-	app.config(function($urlRouterProvider, $stateProvider){
+  	// Esto pasa el token y el email en cada petición que hagamos a la API
+	app.factory("httpInterceptor", ['AuthService', function(AuthService) {
+	  return {
+	    request: function(config) {
+	      config.headers['X-User-Email'] = AuthService.currentUserEmail();
+	      config.headers['X-User-Token'] = AuthService.currentUserToken();
+	      return config;
+	    }
+	  };
+	}]);
+
+	app.config(function($urlRouterProvider, $stateProvider, $httpProvider){
+	  // Configuramos todas las peticiones para pasar el token de usuario
+	  $httpProvider.interceptors.push("httpInterceptor");
+
 	  // Para las urls que no se encuentren, redirigimos a la raíz.
-	  $urlRouterProvider.otherwise("/customers");
+	  $urlRouterProvider.otherwise("/login");
 
 	  // Aquí establecemos los estados de nuestra applicación. 
 	  $stateProvider
-	    .state("customers", {
-	      url: "/customers",
-	      templateUrl: "home.html",
-	      controller: "CustomersController",
-	      controllerAs: "customersCtrl"
+
+
+	    .state("main", {
+	      url: "/",
+	      templateUrl: "main.html",
+	      data: {
+        	permissions: {
+            only: ['member'],
+            redirectTo: "login"
+        	 }
+      		}
 	    })
 
-	    .state("customer", {
-	      url: "/customers/:cliente_id",
+	    .state("login", {
+		    url: "/login",
+		    templateUrl: "login.html",
+		    controller: "LoginController",
+		    controllerAs: "loginCtrl",
+		    data: {
+	          permissions: {
+	          only: ['anonymous'],
+	          redirectTo: "main.customers"
+	        	}
+		      }
+	 		 })
+
+
+	    .state("main.customers", {
+	      url: "customers",
+	      templateUrl: "home.html",
+	      controller: "CustomersController",
+	      controllerAs: "customersCtrl",
+	     
+	    })
+
+	    .state("main.customer", {
+	      url: "customers/:cliente_id",
 	      templateUrl: "customer.html",
 	      controller: "CustomerController",
-	      controllerAs: "customerCtrl"
+	      controllerAs: "customerCtrl",
+	    
 	    })
 	});
 

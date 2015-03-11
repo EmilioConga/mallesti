@@ -22,7 +22,7 @@ class Customer
   validates :town,    presence: true
   validates :city,    presence: true
   validates :country, presence: true
-  validates :cif,     presence: true, uniqueness: {case_sensitive: false}
-  validates :email,   presence: true, uniqueness: {case_sensitive: false},
+  validates :cif,     presence: true, uniqueness: {case_sensitive: false, scope: :user}
+  validates :email,   presence: true, uniqueness: {case_sensitive: false, scope: :user},
     format: Devise.email_regexp
 end
